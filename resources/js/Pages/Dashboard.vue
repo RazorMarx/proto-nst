@@ -1,6 +1,5 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import FileUploader from '@/Components/FileUploader.vue';
 import FileUploaderMultiple from '@/Components/FileUploaderMultiple.vue';
 import { Head } from '@inertiajs/vue3';
 import { onMounted, reactive } from 'vue';
@@ -33,10 +32,6 @@ function deleteFile(file) {
     });
 }
 
-function fileUploaded() {
-    getMyFiles();
-}
-
 </script>
 
 <template>
@@ -51,7 +46,7 @@ function fileUploaded() {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 mb-2">
-                    <FileUploaderMultiple @fileUploaded="fileUploaded"/>
+                    <FileUploaderMultiple @fileUploaded="getMyFiles"/>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div v-for="f in data.files">
